@@ -3,6 +3,7 @@
 http://www.holybro.com/product/59
 
 The KakuteF7 AIO is a flight controller produced by [Holybro](http://www.holybro.com/product/59).
+This copy created specifically for the purposes of documenting Josh and Arjay's Snow/Mini Geese
 
 ## Features
 
