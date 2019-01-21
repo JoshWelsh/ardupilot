@@ -3,6 +3,7 @@
 http://www.holybro.com/product/59
 
 The KakuteF7 AIO is a flight controller produced by [Holybro](http://www.holybro.com/product/59).
+
 This copy created specifically for the purposes of documenting Josh and Arjay's Snow/Mini Geese
 
 ## Features
@@ -34,12 +35,12 @@ The UARTs are marked Rn and Tn in the above pinouts. The Rn pin is the
 receive pin for UARTn. The Tn pin is the transmit pin for UARTn.
 
  - SERIAL0 -> USB
- - SERIAL1 -> UART1 (Telem1)
- - SERIAL2 -> UART2 (Telem2)
+ - SERIAL1 -> UART1 (Telem1) <--Ignore unless you decide to do a telemetry radio/companion computer/lidar
+ - SERIAL2 -> UART2 (Telem2) <--Ignore unless you decide to do a telemetry radio/companion computer/lidar
  - SERIAL3 -> UART3 (GPS)
- - SERIAL4 -> UART4
- - SERIAL5 -> UART7
- - SERIAL6 -> UART6 (Transmit only, FrSky)
+ - SERIAL4 -> UART4 (RC Input for SBUS here)
+ - SERIAL5 -> UART7 (ESC Telemetry, marked "R7", PROTOCOL = 16)
+ - SERIAL6 -> UART6 (Transmit only, FrSky, PROTOCOL = 10 but might be 4)
 
 The SERIAL5 port (UART7) is for ESC telemetry, and has a R7 pad on
 each of the four corners of the KakuteF7 AIO board.
@@ -65,9 +66,9 @@ The KakuteF7 supports up to 6 PWM outputs. The pads for motor output M1 to M6 on
 
 The PWM is in 3 groups:
 
- - PWM 1, 2 and 3 in group1
- - PWM 4 and 5 in group2
- - PWM 6 in group3
+ - PWM 1, 2 and 3 in group1 - Left Aileron/Flaperon (24), Left VTAIL (79), Right VTAIL (80) will go here
+ - PWM 4 and 5 in group2 - LEFT_MOTOR (78) and RIGHT_MOTOR (79) will go here
+ - PWM 6 in group3 - Right Aileron/Flaperon (25) will go here
 
 Channels within the same group need to use the same output rate. If
 any channel in a group uses DShot then all channels in the group need
@@ -89,15 +90,15 @@ The correct battery setting parameters are:
 
 ## Compass
 
-The KakuteF7 AIO does not have a builting compass, but you can attach an external compass using I2C on the SDA and SCL pads.
+The KakuteF7 AIO does not have a built-in compass, but you can attach an external compass using I2C on the SDA and SCL pads.
 
 ## Loading Firmware
 
 Initial firmware load can be done with DFU by plugging in USB with the
 bootloader button pressed. Then you should load the "with_bl.hex"
-firmware, using your favourite DFU loading tool.
+firmware, using your favourite DFU loading tool (Betaflight Configurator).
 
 Once the initial firmware is loaded you can update the firmware using
-any ArduPilot ground station software. Updates should be done with the
+any ArduPilot ground station software (Mission Planner). Updates should be done with the
 *.apj firmware files.
 
