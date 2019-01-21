@@ -35,9 +35,9 @@ The UARTs are marked Rn and Tn in the above pinouts. The Rn pin is the
 receive pin for UARTn. The Tn pin is the transmit pin for UARTn.
 
  - SERIAL0 -> USB
- - SERIAL1 -> UART1 (Telem1) <--Ignore unless you decide to do a telemetry radio/companion computer/lidar
- - SERIAL2 -> UART2 (Telem2) <--Ignore unless you decide to do a telemetry radio/companion computer/lidar
- - SERIAL3 -> UART3 (GPS)
+ - SERIAL1 -> UART1 (Telem1, PROTOCOL = 1) <--Ignore unless you decide to do a telemetry radio/companion computer/lidar
+ - SERIAL2 -> UART2 (Telem2, PROTOCOL = 1) <--Ignore unless you decide to do a telemetry radio/companion computer/lidar
+ - SERIAL3 -> UART3 (GPS, PROTOCOL = 5)
  - SERIAL4 -> UART4 (RC Input for SBUS here)
  - SERIAL5 -> UART7 (ESC Telemetry, marked "R7", PROTOCOL = 16)
  - SERIAL6 -> UART6 (Transmit only, FrSky, PROTOCOL = 10 but might be 4)
