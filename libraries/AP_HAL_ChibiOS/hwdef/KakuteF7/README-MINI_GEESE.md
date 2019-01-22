@@ -74,6 +74,12 @@ Channels within the same group need to use the same output rate. If
 any channel in a group uses DShot then all channels in the group need
 to use DShot.
 
+Set SERVO_BLH_OTYPE to 6 to denote DSHOT600
+Set SERVO_BLH_MASK to 7 #enable motors 4 and 5 by adding 3 and 4, which is weird considering this is a bitmask and 3+4=7 but there is also a value for 7 (motor 8)
+Set SERVO_BLH_AUTO to 1
+Set SERVO_BLH_OTYPE to 6
+
+
 ## Battery Monitoring
 
 The board has a builting voltage and current sensor. The current
