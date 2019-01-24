@@ -1,4 +1,4 @@
-# KakuteF7 AIO Flight Controller
+# KakuteF7 AIO Flight Controller - Skywalker X8
 
 http://www.holybro.com/product/59
 
