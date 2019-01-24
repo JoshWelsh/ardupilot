@@ -4,7 +4,7 @@ http://www.holybro.com/product/59
 
 The KakuteF7 AIO is a flight controller produced by [Holybro](http://www.holybro.com/product/59).
 
-This copy created specifically for the purposes of documenting Josh and Arjay's Snow/Mini Geese
+This copy created specifically for the purposes of documenting Josh's Mini Drak
 
 ## Features
 
@@ -66,18 +66,17 @@ The KakuteF7 supports up to 6 PWM outputs. The pads for motor output M1 to M6 on
 
 The PWM is in 3 groups:
 
- - PWM 1, 2 and 3 in group1 - Left Aileron/Flaperon (24), Left VTAIL (79), Right VTAIL (80) will go here
- - PWM 4 and 5 in group2 - LEFT_MOTOR (78) and RIGHT_MOTOR (79) will go here
- - PWM 6 in group3 - Right Aileron/Flaperon (25) will go here
+ - PWM 1, 2 and 3 in group1 - ElevonLeft=77, ElevonRight=78, null
+ - PWM 4 and 5 in group2 - Throttle=70, null
+ - PWM 6 in group3 - null
 
 Channels within the same group need to use the same output rate. If
 any channel in a group uses DShot then all channels in the group need
 to use DShot.
 
 - Set SERVO_BLH_OTYPE to 6 to denote DSHOT600
-- Set SERVO_BLH_MASK to 7 #enable motors 4 and 5 by adding 3 and 4, which is weird considering this is a bitmask and 3+4=7 but there is also a value for 7 (motor 8)
+- Set SERVO_BLH_MASK to 4
 - Set SERVO_BLH_AUTO to 1
-- Set SERVO_BLH_OTYPE to 6
 
 
 ## Battery Monitoring
