@@ -1,4 +1,4 @@
-# KakuteF7 AIO Flight Controller
+# KakuteF7 AIO Flight Controller - Josh and Arjay's Mini Geese
 
 http://www.holybro.com/product/59
 
