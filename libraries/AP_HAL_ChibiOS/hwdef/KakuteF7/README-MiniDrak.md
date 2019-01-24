@@ -1,4 +1,4 @@
-# KakuteF7 AIO Flight Controller
+# KakuteF7 AIO Flight Controller - Mini Drak
 
 http://www.holybro.com/product/59
 
