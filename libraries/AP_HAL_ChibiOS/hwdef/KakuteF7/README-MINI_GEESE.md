@@ -35,12 +35,12 @@ The UARTs are marked Rn and Tn in the above pinouts. The Rn pin is the
 receive pin for UARTn. The Tn pin is the transmit pin for UARTn.
 
  - SERIAL0 -> USB
- - SERIAL1 -> UART1 (Telem1, PROTOCOL = 1) <--Ignore unless you decide to do a telemetry radio/companion computer/lidar
+ - SERIAL1 -> UART1 (Telem1, PROTOCOL = 1) TX to Channel 3, RX to Channel 4 on the CRSF RX
  - SERIAL2 -> UART2 (Telem2, PROTOCOL = 1) <--Ignore unless you decide to do a telemetry radio/companion computer/lidar
  - SERIAL3 -> UART3 (GPS, PROTOCOL = 5)
- - SERIAL4 -> UART4 (RC Input for SBUS here)
+ - SERIAL4 -> UART4 (Unsure of capabilities here.. will update later - used to be labeled as RC Input but that is 6)
  - SERIAL5 -> UART7 (ESC Telemetry, marked "R7", PROTOCOL = 16)
- - SERIAL6 -> UART6 (Transmit only, FrSky, PROTOCOL = 10 but might be 4)
+ - SERIAL6 -> UART6 (RC INPUT on RX, FrSky SmartPort on TX, PROTOCOL = 10 OPTIONS = 7)
 
 The SERIAL5 port (UART7) is for ESC telemetry, and has a R7 pad on
 each of the four corners of the KakuteF7 AIO board.
