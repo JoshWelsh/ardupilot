@@ -67,7 +67,7 @@ The KakuteF7 supports up to 6 PWM outputs. The pads for motor output M1 to M6 on
 The PWM is in 3 groups:
 
  - PWM 1, 2 and 3 in group1 - Right Aileron/Flaperon (25) to M1, Left Aileron/Flaperon (24) to M2, Right VTAIL (80) to M3 
- - PWM 4 and 5 in group2 - LEFT_MOTOR (78) to M4, RIGHT_MOTOR (79) to M5
+ - PWM 4 and 5 in group2 - LEFT_MOTOR (73) to M4, RIGHT_MOTOR (74) to M5
  - PWM 6 in group3 - Left VTAIL (79) to M6
 
 Channels within the same group need to use the same output rate. If
