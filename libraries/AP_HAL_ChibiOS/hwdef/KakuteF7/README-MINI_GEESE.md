@@ -35,7 +35,7 @@ The UARTs are marked Rn and Tn in the above pinouts. The Rn pin is the
 receive pin for UARTn. The Tn pin is the transmit pin for UARTn.
 
  - SERIAL0 -> USB
- - SERIAL1 -> UART1 (Telem1, PROTOCOL = 1) RX to Channel 3, TX to Channel 4 on the CRSF TX (Crossfire config should say CH3: Mavlink TX, CH4: Mavlink RX)
+ - SERIAL1 -> UART1 (Telem1, PROTOCOL = 1) RX (R1) to Channel 3, TX (T1) to Channel 4 on the CRSF TX (Crossfire config should say CH3: Mavlink TX, CH4: Mavlink RX)
  - SERIAL2 -> UART2 (Telem2, PROTOCOL = 1) <--Ignore unless you decide to do a telemetry radio/companion computer/lidar
  - SERIAL3 -> UART3 (GPS, PROTOCOL = 5)
  - SERIAL4 -> UART4 (Unsure of capabilities here.. will update later - used to be labeled as RC Input but that is 6)
