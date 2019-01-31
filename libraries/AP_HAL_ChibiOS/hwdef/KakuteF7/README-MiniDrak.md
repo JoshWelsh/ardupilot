@@ -90,7 +90,7 @@ The correct battery setting parameters are:
  - BATT_MONITOR 4
  - BATT_VOLT_PIN 13
  - BATT_CURR_PIN 12
- - BATT_VOLT_MULT 10.1
+ - BATT_VOLT_MULT 11.085
  - BATT_AMP_PERVLT 38.56376
 
 ## Compass
