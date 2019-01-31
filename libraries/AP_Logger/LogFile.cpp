@@ -429,7 +429,7 @@ bool AP_Logger_Backend::Write_Mission_Cmd(const AP_Mission &mission,
     return WriteBlock(&pkt, sizeof(pkt));
 }
 
-void AP_Logger_Backend::Write_EntireMission(const AP_Mission &mission)
+void AP_Logger_Backend::Write_EntireMission()
 {
     LoggerMessageWriter_WriteEntireMission writer;
     writer.set_dataflash_backend(this);
@@ -1608,15 +1608,19 @@ void AP_Logger::Write_Rate(const AP_AHRS_View *ahrs,
 }
 
 // Write rally points
-void AP_Logger::Write_Rally(const AP_Rally &rally)
+void AP_Logger::Write_Rally()
 {
+    const AP_Rally *rally = AP::rally();
+    if (rally == nullptr) {
+        return;
+    }
     RallyLocation rally_point;
-    for (uint8_t i=0; i<rally.get_rally_total(); i++) {
-        if (rally.get_rally_point_with_index(i, rally_point)) {
+    for (uint8_t i=0; i<rally->get_rally_total(); i++) {
+        if (rally->get_rally_point_with_index(i, rally_point)) {
             struct log_Rally pkt_rally = {
                 LOG_PACKET_HEADER_INIT(LOG_RALLY_MSG),
                 time_us         : AP_HAL::micros64(),
-                total           : rally.get_rally_total(),
+                total           : rally->get_rally_total(),
                 sequence        : i,
                 latitude        : rally_point.lat,
                 longitude       : rally_point.lng,

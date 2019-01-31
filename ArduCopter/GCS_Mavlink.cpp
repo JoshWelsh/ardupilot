@@ -118,14 +118,6 @@ void GCS_MAVLINK_Copter::send_position_target_global_int()
         0.0f); // yaw_rate
 }
 
-#if AC_FENCE == ENABLED
-NOINLINE void Copter::send_fence_status(mavlink_channel_t chan)
-{
-    fence_send_mavlink_status(chan);
-}
-#endif
-
-
 NOINLINE void Copter::send_sys_status(mavlink_channel_t chan)
 {
     int16_t battery_current = -1;
@@ -303,13 +295,6 @@ bool GCS_MAVLINK_Copter::try_send_message(enum ap_message id)
 #if AP_TERRAIN_AVAILABLE && AC_TERRAIN
         CHECK_PAYLOAD_SIZE(TERRAIN_REQUEST);
         copter.terrain.send_request(chan);
-#endif
-        break;
-
-    case MSG_FENCE_STATUS:
-#if AC_FENCE == ENABLED
-        CHECK_PAYLOAD_SIZE(FENCE_STATUS);
-        copter.send_fence_status(chan);
 #endif
         break;
 
@@ -744,9 +729,9 @@ MAV_RESULT GCS_MAVLINK_Copter::handle_command_long_packet(const mavlink_command_
         // param4 : unused
         if (packet.param2 > 0.0f) {
             if (packet.param1 > 2.9f) { // 3 = speed down
-                copter.wp_nav->set_speed_z(packet.param2 * 100.0f, copter.wp_nav->get_speed_up());
+                copter.wp_nav->set_speed_down(packet.param2 * 100.0f);
             } else if (packet.param1 > 1.9f) { // 2 = speed up
-                copter.wp_nav->set_speed_z(copter.wp_nav->get_speed_down(), packet.param2 * 100.0f);
+                copter.wp_nav->set_speed_up(packet.param2 * 100.0f);
             } else {
                 copter.wp_nav->set_speed_xy(packet.param2 * 100.0f);
             }
@@ -1097,10 +1082,10 @@ void GCS_MAVLINK_Copter::handleMessage(mavlink_message_t* msg)
             climb_rate_cms = 0.0f;
         } else if (packet.thrust > 0.5f) {
             // climb at up to WPNAV_SPEED_UP
-            climb_rate_cms = (packet.thrust - 0.5f) * 2.0f * copter.wp_nav->get_speed_up();
+            climb_rate_cms = (packet.thrust - 0.5f) * 2.0f * copter.wp_nav->get_default_speed_up();
         } else {
             // descend at up to WPNAV_SPEED_DN
-            climb_rate_cms = (0.5f - packet.thrust) * 2.0f * -fabsf(copter.wp_nav->get_speed_down());
+            climb_rate_cms = (0.5f - packet.thrust) * 2.0f * -fabsf(copter.wp_nav->get_default_speed_down());
         }
 
         // if the body_yaw_rate field is ignored, use the commanded yaw position

@@ -492,7 +492,7 @@ private:
 
     // AC_Fence library to reduce fly-aways
 #if AC_FENCE == ENABLED
-    AC_Fence fence{ahrs};
+    AC_Fence fence;
 #endif
 
 #if AC_AVOID_ENABLED == ENABLED
@@ -724,11 +724,9 @@ private:
 
     // fence.cpp
     void fence_check();
-    void fence_send_mavlink_status(mavlink_channel_t chan);
 
     // GCS_Mavlink.cpp
     void gcs_send_heartbeat(void);
-    void send_fence_status(mavlink_channel_t chan);
     void send_sys_status(mavlink_channel_t chan);
     void send_nav_controller_output(mavlink_channel_t chan);
     void send_rpm(mavlink_channel_t chan);

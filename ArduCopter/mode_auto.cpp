@@ -1217,8 +1217,8 @@ void Copter::ModeAuto::do_loiter_to_alt(const AP_Mission::Mission_Command& cmd)
     loiter_to_alt.alt_error_cm = 0;
 
     pos_control->set_max_accel_z(wp_nav->get_accel_z());
-    pos_control->set_max_speed_z(wp_nav->get_speed_down(),
-                                 wp_nav->get_speed_up());
+    pos_control->set_max_speed_z(wp_nav->get_default_speed_down(),
+                                 wp_nav->get_default_speed_up());
 
     if (pos_control->is_active_z()) {
         pos_control->freeze_ff_z();
@@ -1355,9 +1355,9 @@ void Copter::ModeAuto::do_change_speed(const AP_Mission::Mission_Command& cmd)
 {
     if (cmd.content.speed.target_ms > 0) {
         if (cmd.content.speed.speed_type == 2)  {
-            copter.wp_nav->set_speed_z(copter.wp_nav->get_speed_down(), cmd.content.speed.target_ms * 100.0f);
+            copter.wp_nav->set_speed_up(cmd.content.speed.target_ms * 100.0f);
         } else if (cmd.content.speed.speed_type == 3)  {
-            copter.wp_nav->set_speed_z(cmd.content.speed.target_ms * 100.0f, copter.wp_nav->get_speed_up());
+            copter.wp_nav->set_speed_down(cmd.content.speed.target_ms * 100.0f);
         } else {
             copter.wp_nav->set_speed_xy(cmd.content.speed.target_ms * 100.0f);
         }
