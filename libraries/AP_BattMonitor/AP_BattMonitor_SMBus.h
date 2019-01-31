@@ -8,7 +8,7 @@
 
 #define AP_BATTMONITOR_SMBUS_BUS_INTERNAL           0
 #define AP_BATTMONITOR_SMBUS_BUS_EXTERNAL           1
-#define AP_BATTMONITOR_SMBUS_I2C_ADDR               0x0B
+#define AP_BATTMONITOR_SMBUS_I2C_ADDR               0x10
 #define AP_BATTMONITOR_SMBUS_TIMEOUT_MICROS         5000000 // sensor becomes unhealthy if no successful readings for 5 seconds
 
 class AP_BattMonitor_SMBus : public AP_BattMonitor_Backend
