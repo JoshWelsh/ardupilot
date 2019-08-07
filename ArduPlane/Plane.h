@@ -159,6 +159,7 @@ public:
     friend class ModeGuided;
     friend class ModeInitializing;
     friend class ModeManual;
+    friend class ModeManualPlus;
     friend class ModeQStabilize;
     friend class ModeQHover;
     friend class ModeQLoiter;
@@ -324,6 +325,7 @@ private:
     ModeGuided mode_guided;
     ModeInitializing mode_initializing;
     ModeManual mode_manual;
+    ModeManual mode_manualplus;
     ModeQStabilize mode_qstabilize;
     ModeQHover mode_qhover;
     ModeQLoiter mode_qloiter;

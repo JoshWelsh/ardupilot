@@ -35,6 +35,7 @@ public:
         QRTL          = 21,
         QAUTOTUNE     = 22,
         QACRO         = 23,
+        MANUALPLUS    = 24,
     };
 
     // Constructor
@@ -181,6 +182,23 @@ public:
     Number mode_number() const override { return Number::MANUAL; }
     const char *name() const override { return "MANUAL"; }
     const char *name4() const override { return "MANU"; }
+
+    // methods that affect movement of the vehicle in this mode
+    void update() override;
+
+protected:
+
+    bool _enter() override;
+    void _exit() override;
+};
+
+class ModeManualPlus : public Mode
+{
+public:
+
+    Number mode_number() const override { return Number::MANUALPLUS; }
+    const char *name() const override { return "MANUALPLUS"; }
+    const char *name4() const override { return "MPLS"; }
 
     // methods that affect movement of the vehicle in this mode
     void update() override;
