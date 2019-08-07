@@ -48,7 +48,8 @@ void GCS_Plane::update_vehicle_sensor_status_flags(void)
     switch (plane.control_mode->mode_number()) {
     case Mode::Number::MANUAL:
         break;
-
+    case Mode::Number::MANUALPLUS:
+        break;
     case Mode::Number::ACRO:
     case Mode::Number::QACRO:
         rate_controlled = true;

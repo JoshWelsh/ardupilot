@@ -1,6 +1,8 @@
 # hw definition file for processing by chibios_pins.py
 # for Holybro KakuteF7 hardware.
 @ thanks to betaflight for pin information
+#test
+#test2
 
 # MCU class and specific type
 MCU STM32F7xx STM32F745xx
@@ -35,7 +37,7 @@ I2C_ORDER I2C1
 UART_ORDER OTG1 USART3 USART1 USART2 UART4 UART7 USART6
 
 # buzzer
-PD15 TIM4_CH4 TIM4 GPIO(77) ALARM
+#PD15 TIM4_CH4 TIM4 GPIO(77) ALARM
 #PD15 BUZZER OUTPUT GPIO(80) LOW
 #define HAL_BUZZER_PIN 80
 #define HAL_BUZZER_ON 1
@@ -116,8 +118,8 @@ PC9  TIM3_CH4 TIM3 PWM(5) GPIO(54)
 PA3  TIM5_CH4 TIM5 PWM(6) GPIO(55)
 
 # extra PWM outs
-#PD12  TIM4_CH1 TIM4 PWM(7) GPIO(56) # led pin
-#PD15 TIM4_CH4 TIM4 PWM(8) GPIO(57) # buzzer pin (need to comment out buzzer)
+PD12  TIM4_CH1 TIM4 PWM(7) GPIO(56) # led pin
+PD15 TIM4_CH4 TIM4 PWM(8) GPIO(57) # buzzer pin (need to comment out buzzer)
 
 DMA_PRIORITY S*
 
@@ -152,7 +154,7 @@ define OSD_ENABLED ENABLED
 define HAL_OSD_TYPE_DEFAULT 1
 ROMFS_WILDCARD libraries/AP_OSD/fonts/font*.bin
 
-define BOARD_PWM_COUNT_DEFAULT 6
+define BOARD_PWM_COUNT_DEFAULT 8
 define STM32_PWM_USE_ADVANCED TRUE
 
 # we are low on flash on this board

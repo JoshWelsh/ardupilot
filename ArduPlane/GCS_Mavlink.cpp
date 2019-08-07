@@ -21,6 +21,7 @@ MAV_MODE GCS_MAVLINK_Plane::base_mode() const
     // ArduPlane documentation
     switch (plane.control_mode->mode_number()) {
     case Mode::Number::MANUAL:
+    case Mode::Number::MANUALPLUS:
     case Mode::Number::TRAINING:
     case Mode::Number::ACRO:
     case Mode::Number::QACRO:
@@ -59,7 +60,7 @@ MAV_MODE GCS_MAVLINK_Plane::base_mode() const
         _base_mode |= MAV_MODE_FLAG_STABILIZE_ENABLED;        
     }
 
-    if (plane.control_mode != &plane.mode_manual && plane.control_mode != &plane.mode_initializing) {
+    if (plane.control_mode != &plane.mode_manual && plane.control_mode != &plane.mode_initializing && plane.control_mode != &plane.mode_manualplus) {
         // stabiliser of some form is enabled
         _base_mode |= MAV_MODE_FLAG_STABILIZE_ENABLED;
     }
@@ -159,6 +160,9 @@ void GCS_MAVLINK_Plane::send_nav_controller_output() const
     if (plane.control_mode == &plane.mode_manual) {
         return;
     }
+    if (plane.control_mode == &plane.mode_manualplus) {
+        return;
+    }
     const QuadPlane &quadplane = plane.quadplane;
     if (quadplane.in_vtol_mode()) {
         const Vector3f &targets = quadplane.attitude_control->get_att_target_euler_cd();
@@ -192,6 +196,9 @@ void GCS_MAVLINK_Plane::send_nav_controller_output() const
 void GCS_MAVLINK_Plane::send_position_target_global_int()
 {
     if (plane.control_mode == &plane.mode_manual) {
+        return;
+    }
+    if (plane.control_mode == &plane.mode_manualplus) {
         return;
     }
     Location &next_WP_loc = plane.next_WP_loc;
@@ -336,6 +343,9 @@ void GCS_MAVLINK_Plane::send_pid_tuning()
 {
     if (plane.control_mode == &plane.mode_manual) {
         // no PIDs should be used in manual
+        return;
+    }
+    if (plane.control_mode == &plane.mode_manualplus) {
         return;
     }
 

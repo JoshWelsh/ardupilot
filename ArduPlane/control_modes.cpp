@@ -7,6 +7,9 @@ Mode *Plane::mode_from_mode_num(const enum Mode::Number num)
     case Mode::Number::MANUAL:
         ret = &mode_manual;
         break;
+    case Mode::Number::MANUALPLUS:
+        ret = &mode_manualplus;
+        break;
     case Mode::Number::CIRCLE:
         ret = &mode_circle;
         break;
@@ -189,6 +192,9 @@ void Plane::autotune_enable(bool enable)
 bool Plane::fly_inverted(void)
 {
     if (control_mode == &plane.mode_manual) {
+        return false;
+    }
+    if (control_mode == &plane.mode_manualplus) {
         return false;
     }
     if (inverted_flight) {
